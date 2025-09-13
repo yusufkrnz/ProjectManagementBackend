@@ -1,94 +1,44 @@
-package com.yusufkurnaz.ProjectManagementBackend.Login.PreLogin.Authentication.Controller;
-
-import com.yusufkurnaz.ProjectManagementBackend.Login.PreLogin.Authentication.Controller.request.LoginRequest;
-import com.yusufkurnaz.ProjectManagementBackend.Login.PreLogin.Authentication.Controller.response.AuthResponse;
-import com.yusufkurnaz.ProjectManagementBackend.Login.PreLogin.Authentication.Service.AuthService;
-import com.yusufkurnaz.ProjectManagementBackend.Common.Exceptions.AuthenticationException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import com.yusufkurnaz.ProjectManagementBackend.Login.PreLogin.Authentication.Service.AuthService;
+import com.yusufkurnaz.ProjectManagementBackend.Login.PreLogin.Authentication.Controller.request.LoginRequest;
+import com.yusufkurnaz.ProjectManagementBackend.Common.Model.User;
 
-import jakarta.validation.Valid;
+
 
 @RestController
-@RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/api/v1/auth")
+@Tag(name = "Auth Controller", description = "Auth controller")
 public class AuthController {
-    
-    @Autowired
-    private AuthService authService;
-    
-    /**
-     * Kullanıcı giriş endpoint'i
-     * POST /api/auth/login
-     */
-    @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
-        try {
-            AuthResponse response = authService.authenticate(request);
-            return ResponseEntity.ok(response);
-        } catch (AuthenticationException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+    private final AuthService authService;
+
+    public AuthController(AuthService authService) {
+        this.authService = authService;
     }
-    
-    /**
-     * Token yenileme endpoint'i
-     * POST /api/auth/refresh
-     */
-    @PostMapping("/refresh")
-    public ResponseEntity<AuthResponse> refresh(@RequestBody RefreshTokenRequest request) {
-        try {
-            // TODO: Refresh token logic
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-    }
-    
-    /**
-     * Kullanıcı çıkış endpoint'i
-     * POST /api/auth/logout
-     */
-    @PostMapping("/logout")
-    public ResponseEntity<Void> logout(@RequestHeader("Authorization") String token) {
-        try {
-            // TODO: Logout logic (token blacklist)
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-    
-    /**
-     * Token doğrulama endpoint'i
-     * GET /api/auth/validate
-     */
-    @GetMapping("/validate")
-    public ResponseEntity<AuthResponse> validateToken(@RequestHeader("Authorization") String token) {
-        try {
-            // TODO: Token validation logic
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
-    }
-    
-    /**
-     * Refresh token request DTO
-     */
-    public static class RefreshTokenRequest {
-        private String refreshToken;
-        
-        public String getRefreshToken() {
-            return refreshToken;
-        }
-        
-        public void setRefreshToken(String refreshToken) {
-            this.refreshToken = refreshToken;
-        }
-    }
+
+@PostMapping("/login")
+public ResponseEntity<String> login(@RequestBody LoginRequest request) {
+    String token = authService.login(request);
+    return ResponseEntity.ok(authService.login(request));
+}
+
+@PostMapping("/refresh-token")
+public ResponseEntity<String> refreshToken(@RequestBody String token) {
+    return ResponseEntity.ok(authService.refreshToken(token));
+}
+
+@PostMapping("/logout")
+public ResponseEntity<String> logout(@RequestBody String token) {
+    return ResponseEntity.ok(authService.logout(token));
+}
+@GetMapping("/me")
+public ResponseEntity<User> me() {
+    return ResponseEntity.ok(authService.me());
+}
+
+
 }

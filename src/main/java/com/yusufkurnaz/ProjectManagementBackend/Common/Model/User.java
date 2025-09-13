@@ -1,126 +1,96 @@
 package com.yusufkurnaz.ProjectManagementBackend.Common.Model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@SuperBuilder
 public class User extends BaseEntity {
-    
-    // Email - Hash edilmiş (search için)
-    @Column(name = "email_hash", unique = true, nullable = false)
-    private String emailHash;
-    
-    // Email - Encrypted (decrypt edilebilir)
-    @Column(name = "email_encrypted", nullable = false)
-    private String emailEncrypted;
-    
-    // Password - BCrypt hash (one-way)
-    @Column(name = "password_hash", nullable = false)
-    private String passwordHash;
-    
-    // Kişisel veriler - AES encrypted
-    @Column(name = "first_name_encrypted")
-    private String firstNameEncrypted;
-    
-    @Column(name = "last_name_encrypted")
-    private String lastNameEncrypted;
-    
-    @Column(name = "phone_number_encrypted")
-    private String phoneNumberEncrypted;
-    
-    // Avatar URL - Plain text (public data)
-    @Column(name = "avatar_url")
-    private String avatarUrl;
-    
-    // Status - Plain text (enum)
+
+    @Column(name = "username", nullable = false, unique = true)
+    private String username;
+
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
     @Enumerated(EnumType.STRING)
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private UserStatus status = UserStatus.ACTIVE;
-    
-    // Security fields
-    @Column(name = "failed_login_attempts")
-    private Integer failedLoginAttempts = 0;
-    
-    @Column(name = "last_login_at")
-    private LocalDateTime lastLoginAt;
-    
-    @Column(name = "password_changed_at")
-    private LocalDateTime passwordChangedAt;
-    
-    @Column(name = "email_verified")
-    private Boolean emailVerified = false;
-    
-    @Column(name = "email_verification_token")
-    private String emailVerificationToken;
-    
-    @Column(name = "password_reset_token")
-    private String passwordResetToken;
-    
-    @Column(name = "password_reset_expires_at")
-    private LocalDateTime passwordResetExpiresAt;
-    
-    // Relationships
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<WorkspaceUser> workspaceUsers = new HashSet<>();
-    
-    // User Status Enum
+
     public enum UserStatus {
-        ACTIVE, INACTIVE, SUSPENDED, PENDING_VERIFICATION, LOCKED
+        ACTIVE, INACTIVE, SUSPENDED
     }
     
-    // Helper methods
-    public boolean isAccountLocked() {
-        return status == UserStatus.LOCKED || 
-               (failedLoginAttempts != null && failedLoginAttempts >= 5);
+    // Constructors
+    public User() {}
+    
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.status = UserStatus.ACTIVE;
     }
     
-    public boolean isEmailVerified() {
-        return emailVerified != null && emailVerified;
+    // Getters and Setters
+    public String getUsername() {
+        return username;
     }
     
-    public boolean hasValidPasswordResetToken() {
-        return passwordResetToken != null && 
-               passwordResetExpiresAt != null && 
-               passwordResetExpiresAt.isAfter(LocalDateTime.now());
+    public void setUsername(String username) {
+        this.username = username;
     }
     
-    public void incrementFailedLoginAttempts() {
-        if (failedLoginAttempts == null) {
-            failedLoginAttempts = 0;
-        }
-        failedLoginAttempts++;
-        
-        if (failedLoginAttempts >= 5) {
-            status = UserStatus.LOCKED;
-        }
+    public String getEmail() {
+        return email;
     }
     
-    public void resetFailedLoginAttempts() {
-        failedLoginAttempts = 0;
-        if (status == UserStatus.LOCKED) {
-            status = UserStatus.ACTIVE;
-        }
+    public void setEmail(String email) {
+        this.email = email;
     }
     
-    public void updateLastLogin() {
-        lastLoginAt = LocalDateTime.now();
-        resetFailedLoginAttempts();
+    public String getPassword() {
+        return password;
     }
     
-    public void updatePasswordChange() {
-        passwordChangedAt = LocalDateTime.now();
-        passwordResetToken = null;
-        passwordResetExpiresAt = null;
+    public void setPassword(String password) {
+        this.password = password;
     }
+    
+    public String getFirstName() {
+        return firstName;
+    }
+    
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    
+    public String getLastName() {
+        return lastName;
+    }
+    
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    
+    public UserStatus getStatus() {
+        return status;
+    }
+    
+    public void setStatus(UserStatus status) {
+        this.status = status;
+    }
+    
 }

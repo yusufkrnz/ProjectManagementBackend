@@ -1,20 +1,32 @@
 package com.yusufkurnaz.ProjectManagementBackend.Login.PreLogin.Authentication.Controller.request;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-import lombok.Data;
-
-@Data
 public class LoginRequest {
-    
-    @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email format")
-    private String email;
-    
-    @NotBlank(message = "Password is required")
-    @Size(min = 6, message = "Password must be at least 6 characters")
+    private String username;
     private String password;
     
-    private String workspaceId; // Opsiyonel - hangi workspace'e giriş yapılacak
+    // Default constructor
+    public LoginRequest() {}
+    
+    // Constructor with parameters
+    public LoginRequest(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+    
+    // Getters and Setters
+    public String getUsername() {
+        return username;
+    }
+    
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+    
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
