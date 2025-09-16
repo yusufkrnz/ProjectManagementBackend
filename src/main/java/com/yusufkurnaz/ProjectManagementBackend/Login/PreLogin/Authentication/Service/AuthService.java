@@ -1,53 +1,70 @@
 package com.yusufkurnaz.ProjectManagementBackend.Login.PreLogin.Authentication.Service;
 
-import org.springframework.stereotype.Service;
-import lombok.RequiredArgsConstructor;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.Operation;
-import com.yusufkurnaz.ProjectManagementBackend.Login.PreLogin.Authentication.Controller.request.LoginRequest;
 import com.yusufkurnaz.ProjectManagementBackend.Common.Model.User;
+import com.yusufkurnaz.ProjectManagementBackend.Common.Repository.UserRepository;
+import com.yusufkurnaz.ProjectManagementBackend.Login.PreLogin.Authentication.Controller.request.LoginRequest;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
-/**
- * AuthService - Authentication ile ilgili işlemleri yapan servis.
- */
 @Service
 @RequiredArgsConstructor
-@Tag(name = "Auth Service", description = "Authentication service endpoints")
 public class AuthService {
 
-    private final JwtService jwtService; // JWT ile ilgili işlemleri çağırmak için
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
 
-    @Operation(summary = "Login", description = "Kullanıcı giriş işlemi")
     public String login(LoginRequest request) {
-        // Burada DB kontrolü ve token üretme mantığı olacak
-        User user = new User(); // örnek - gerçek User DB’den gelmeli
+        // Authentication manager ile kullanıcıyı doğrula
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getUsername(),
+                        request.getPassword()
+                )
+        );
+
+        // UserDetails'i al
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        
+        // JWT token oluştur
+        return jwtService.generateToken(userDetails);
+    }
+
+    public String refreshToken(String token) {
+        // Token'dan username'i çıkar
+        String username = jwtService.extractUsername(token);
+        
+        // User'ı database'den bul
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        
+        // Yeni token oluştur
         return jwtService.generateToken(user);
     }
 
-    @Operation(summary = "Refresh Token", description = "Var olan access token yenileme işlemi")
-    public String refreshToken(String token) {
-        return jwtService.generateRefreshToken(new User()); // örnek
-    }
-
-    @Operation(summary = "Logout", description = "Kullanıcı çıkış işlemi")
     public String logout(String token) {
-        // JWT’de genelde logout olmaz, ama black-list mantığı eklenebilir
-        return "Logged out: " + token;
+        // JWT stateless olduğu için logout'ta token'ı blacklist'e ekleyebiliriz
+        // Şimdilik basit bir mesaj döndürüyoruz
+        return "Successfully logged out";
     }
 
-    @Operation(summary = "Validate Credentials", description = "Kullanıcı adı ve şifre kontrolü")
-    public boolean validateCredentials(String username, String password) {
-        // Şimdilik sabit true dönüyor, DB kontrolü eklenmeli
-        return true;
-    }
-
-    @Operation(summary = "Get Current User", description = "Mevcut kullanıcı bilgisi")
     public User me() {
-        // Şimdilik örnek user dönüyor
-        User user = new User();
-        user.setUsername("current-user");
-        user.setEmail("user@example.com");
-        user.setPassword("dummy");
-        return user;
+        // SecurityContext'ten current user'ı al
+        Authentication authentication = org.springframework.security.core.context.SecurityContextHolder
+                .getContext().getAuthentication();
+        
+        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            return userRepository.findByUsername(userDetails.getUsername())
+                    .orElseThrow(() -> new RuntimeException("User not found"));
+        }
+        
+        throw new RuntimeException("No authenticated user found");
     }
 }
