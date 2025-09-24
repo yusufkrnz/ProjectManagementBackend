@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.experimental.SuperBuilder;
 
 @Entity
@@ -25,6 +26,7 @@ public class Workspace extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
+    @Builder.Default
     private WorkspaceStatus status = WorkspaceStatus.ACTIVE;
 
     public enum WorkspaceStatus {

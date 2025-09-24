@@ -1,14 +1,14 @@
 package com.yusufkurnaz.ProjectManagementBackend.Common.Model;
 
+import com.yusufkurnaz.ProjectManagementBackend.Common.Model.enums.UserStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "users")
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class User extends BaseEntity {
 
     @Column(name = "username", nullable = false, unique = true)
@@ -30,10 +30,7 @@ public class User extends BaseEntity {
     @Column(name = "status", nullable = false)
     private UserStatus status = UserStatus.ACTIVE;
 
-    public enum UserStatus {
-        ACTIVE, INACTIVE, SUSPENDED
-    }
-    
+
     // Constructors
     public User() {}
     
@@ -45,52 +42,6 @@ public class User extends BaseEntity {
     }
     
     // Getters and Setters
-    public String getUsername() {
-        return username;
-    }
-    
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    
-    public String getEmail() {
-        return email;
-    }
-    
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
-    public String getPassword() {
-        return password;
-    }
-    
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    
-    public String getFirstName() {
-        return firstName;
-    }
-    
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    
-    public String getLastName() {
-        return lastName;
-    }
-    
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    
-    public UserStatus getStatus() {
-        return status;
-    }
-    
-    public void setStatus(UserStatus status) {
-        this.status = status;
-    }
+
     
 }

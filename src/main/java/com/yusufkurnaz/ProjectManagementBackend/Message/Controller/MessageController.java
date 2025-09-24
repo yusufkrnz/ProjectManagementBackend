@@ -1,4 +1,7 @@
-package com.yusufkurnaz.ProjectManagementBackend.Messag.Controller;
+package com.yusufkurnaz.ProjectManagementBackend.Message.Controller;
 
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
 public class MessageController {
 }

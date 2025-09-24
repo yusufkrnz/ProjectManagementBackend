@@ -1,5 +1,6 @@
 package com.yusufkurnaz.ProjectManagementBackend.Common.Config;
 
+import com.yusufkurnaz.ProjectManagementBackend.Login.PreLogin.Authentication.Service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.experimental.SuperBuilder;
 
 @MappedSuperclass
@@ -34,6 +35,7 @@ public class BaseEntity implements Serializable {
     private LocalDateTime updatedAt;
 
     @Column(name = "is_active", nullable = false)
+    @Builder.Default
     private Boolean isActive = true;
     
     @Column(name = "created_by")

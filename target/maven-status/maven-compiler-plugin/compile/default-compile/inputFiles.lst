@@ -8,6 +8,17 @@
 /Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Common/Model/BaseEntity.java
 /Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Common/Model/User.java
 /Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Common/Repository/UserRepository.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Common/Service/impl/UserDetailsServiceImpl.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Controller/InstallCallbackController.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Controller/InstallationController.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Controller/RepositoryController.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Controller/WebhookController.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Controller/request/CreateRepositoryRequest.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Controller/response/CreateRepositoryResponse.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Dto/InstallationSummary.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Service/GitHubAppAuthService.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Service/GitHubInstallationService.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Service/GitHubRepositoryService.java
 /Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Login/PreLogin/Authentication/Controller/AuthController.java
 /Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Login/PreLogin/Authentication/Controller/request/LoginRequest.java
 /Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/main/java/com/yusufkurnaz/ProjectManagementBackend/Login/PreLogin/Authentication/Controller/request/RefreshTokenRequest.java

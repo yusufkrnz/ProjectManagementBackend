@@ -1,6 +1,7 @@
 package com.yusufkurnaz.ProjectManagementBackend.Common.Dto;
 
 import jakarta.validation.Valid;
+import jakarta.validation.ValidationException;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;

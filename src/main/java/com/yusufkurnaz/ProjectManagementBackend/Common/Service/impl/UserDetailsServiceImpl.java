@@ -1,6 +1,7 @@
-package com.yusufkurnaz.ProjectManagementBackend.Common.Service;
+package com.yusufkurnaz.ProjectManagementBackend.Common.Service.impl;
 
 import com.yusufkurnaz.ProjectManagementBackend.Common.Model.User;
+import com.yusufkurnaz.ProjectManagementBackend.Common.Model.enums.UserStatus;
 import com.yusufkurnaz.ProjectManagementBackend.Common.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -8,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
 
 import java.util.Collections;
 
@@ -32,7 +34,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .accountExpired(false)
                 .accountLocked(false)
                 .credentialsExpired(false)
-                .disabled(user.getStatus() != User.UserStatus.ACTIVE)
+                .disabled(user.getStatus() != UserStatus.ACTIVE)
                 .build();
     }
 }
