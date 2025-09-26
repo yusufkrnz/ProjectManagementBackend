@@ -33,6 +33,12 @@ public class Document extends BaseProcessor {
     @Column(name = "stored_filename", nullable = false)
     private String storedFilename;
 
+    @Column(name = "title", length = 500)
+    private String title; // Document title (can be extracted from filename)
+
+    @Column(name = "description", columnDefinition = "TEXT")
+    private String description; // Document description or summary
+
     @Column(name = "file_path", nullable = false)
     private String filePath;
 

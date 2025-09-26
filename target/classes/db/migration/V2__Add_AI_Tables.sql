@@ -10,6 +10,8 @@ CREATE TABLE ai_documents (
     id UUID PRIMARY KEY,
     original_filename VARCHAR(500) NOT NULL,
     stored_filename VARCHAR(500) NOT NULL,
+    title VARCHAR(500),
+    description TEXT,
     file_path VARCHAR(1000) NOT NULL,
     file_type VARCHAR(50) NOT NULL,
     file_size BIGINT NOT NULL,

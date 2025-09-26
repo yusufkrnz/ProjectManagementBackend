@@ -32,7 +32,7 @@ public class DocumentChunk extends BaseEntity {
     @Column(name = "chunk_index", nullable = false)
     private Integer chunkIndex;
 
-    // ⭐ VECTOR EMBEDDING - pgvector kullanıyoruz
+    // ⭐ VECTOR EMBEDDING - pgvector kullanıyor
     @Column(name = "embedding", columnDefinition = "vector(384)")
     private String embedding; // Hugging Face all-MiniLM-L6-v2 output (384 dimensions)
 

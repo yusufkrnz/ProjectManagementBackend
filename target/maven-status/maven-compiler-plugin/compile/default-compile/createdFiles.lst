@@ -10,6 +10,7 @@ com/yusufkurnaz/ProjectManagementBackend/Common/Model/enums/FileType.class
 com/yusufkurnaz/ProjectManagementBackend/Common/Dto/ApiResponse$ApiResponseBuilder.class
 com/yusufkurnaz/ProjectManagementBackend/AI/Service/impl/DocumentProcessingServiceImpl$1.class
 com/yusufkurnaz/ProjectManagementBackend/AI/Dto/request/DiagramGenerationRequest.class
+com/yusufkurnaz/ProjectManagementBackend/Integration/HuggingFace/Service/impl/LLMServiceStub$1.class
 com/yusufkurnaz/ProjectManagementBackend/AI/Dto/response/DocumentProcessingResponse.class
 com/yusufkurnaz/ProjectManagementBackend/AI/Dto/response/DiagramGenerationResponse$DiagramGenerationResponseBuilder.class
 com/yusufkurnaz/ProjectManagementBackend/AI/Entity/DocumentChunk.class
