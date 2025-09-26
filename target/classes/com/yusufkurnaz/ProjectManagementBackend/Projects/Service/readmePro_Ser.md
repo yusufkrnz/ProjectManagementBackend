@@ -1,1 +1,0 @@
-Proje Servisi Nasıl Çalışıyor ? 

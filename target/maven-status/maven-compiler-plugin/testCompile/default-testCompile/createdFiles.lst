@@ -1,1 +1,8 @@
 com/yusufkurnaz/ProjectManagementBackend/ProjectManagementBackendApplicationTests.class
+com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Controller/InstallCallbackControllerTest.class
+com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Service/GitHubRepositoryServiceTest.class
+com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Service/GitHubInstallationServiceTest.class
+com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/GitHubBasicTest.class
+com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Controller/WebhookControllerTest.class
+com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Service/GitHubAppAuthServiceTest.class
+com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Config/GitHubTestConfig.class

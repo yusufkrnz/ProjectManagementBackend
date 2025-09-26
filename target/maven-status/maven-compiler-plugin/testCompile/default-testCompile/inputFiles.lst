@@ -1,1 +1,8 @@
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/test/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Config/GitHubTestConfig.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/test/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Controller/InstallCallbackControllerTest.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/test/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Controller/WebhookControllerTest.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/test/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/GitHubBasicTest.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/test/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Service/GitHubAppAuthServiceTest.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/test/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Service/GitHubInstallationServiceTest.java
+/Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/test/java/com/yusufkurnaz/ProjectManagementBackend/Integration/GitHub/Service/GitHubRepositoryServiceTest.java
 /Users/yusufkurnaz/Desktop/Projects/Backend/SpringBoot/ProjectManagementBackend/src/test/java/com/yusufkurnaz/ProjectManagementBackend/ProjectManagementBackendApplicationTests.java
