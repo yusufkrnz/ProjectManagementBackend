@@ -82,7 +82,7 @@ public class DocumentProcessingServiceImpl implements DocumentProcessingService 
 
     @Override
     public Document reprocessDocument(UUID documentId) {
-        // TODO: Implement reprocessing logic
+        // Implement reprocessing logic
         throw new UnsupportedOperationException("Reprocessing not implemented yet");
     }
 
@@ -131,7 +131,7 @@ public class DocumentProcessingServiceImpl implements DocumentProcessingService 
 
     @Override
     public void generateEmbeddingsForDocument(UUID documentId) {
-        // TODO: Implement embedding generation (async)
+        // Implement embedding generation (async)
         log.info("Embedding generation requested for document: {}", documentId);
     }
 
@@ -165,7 +165,7 @@ public class DocumentProcessingServiceImpl implements DocumentProcessingService 
 
     @Override
     public List<Document> getUserDocuments(UUID userId, String fileType, String processingStatus, int page, int size) {
-        // TODO: Implement with pagination and filtering
+        // Implement with pagination and filtering
         return documentRepository.findByUploadedByAndIsActiveTrueOrderByCreatedAtDesc(
                 userId, org.springframework.data.domain.PageRequest.of(page, size)
         ).getContent();

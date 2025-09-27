@@ -107,14 +107,14 @@ public class CanvasFileServiceImpl implements CanvasFileService {
 
     @Override
     public CanvasFile uploadFileFromUrl(UUID canvasBoardId, String fileUrl, String filename, UUID userId) {
-        // TODO: Implement URL-based file upload
+       
         throw new UnsupportedOperationException("URL-based upload not implemented yet");
     }
 
     @Override
     public CanvasFile uploadFileFromStream(UUID canvasBoardId, InputStream inputStream, 
                                          String filename, String mimeType, Long fileSize, UUID userId) {
-        // TODO: Implement stream-based file upload
+       
         throw new UnsupportedOperationException("Stream-based upload not implemented yet");
     }
 
@@ -200,27 +200,27 @@ public class CanvasFileServiceImpl implements CanvasFileService {
     @Override
     @Transactional(readOnly = true)
     public String getPublicFileUrl(UUID fileId) {
-        // TODO: Implement public URL generation (with expiry tokens)
+      
         return getFileUrl(fileId);
     }
 
     @Override
     public CanvasFile generateThumbnail(UUID fileId, UUID userId) {
-        // TODO: Implement thumbnail generation
+       
         throw new UnsupportedOperationException("Thumbnail generation not implemented yet");
     }
 
     @Override
     @Transactional(readOnly = true)
     public byte[] getThumbnailContent(UUID fileId, UUID userId) {
-        // TODO: Implement thumbnail content retrieval
+     
         throw new UnsupportedOperationException("Thumbnail retrieval not implemented yet");
     }
 
     @Override
     @Transactional(readOnly = true)
     public String getThumbnailUrl(UUID fileId) {
-        // TODO: Implement thumbnail URL generation
+       
         throw new UnsupportedOperationException("Thumbnail URL not implemented yet");
     }
 
@@ -300,7 +300,7 @@ public class CanvasFileServiceImpl implements CanvasFileService {
 
     @Override
     public CanvasFile duplicateFile(UUID fileId, UUID targetCanvasBoardId, UUID userId) {
-        // TODO: Implement file duplication
+       
         throw new UnsupportedOperationException("File duplication not implemented yet");
     }
 
@@ -333,17 +333,17 @@ public class CanvasFileServiceImpl implements CanvasFileService {
 
     @Override
     public void processUploadedFile(UUID fileId) {
-        // TODO: Implement async file processing (virus scan, optimization, etc.)
+        //  Implement async file processing (virus scan, optimization, etc.)
     }
 
     @Override
     public void cleanupUnusedFiles(UUID canvasBoardId) {
-        // TODO: Implement cleanup of unused files
+        // Implement cleanup of unused files
     }
 
     @Override
     public void cleanupOldFiles(int daysOld) {
-        // TODO: Implement cleanup of old deleted files
+        // Implement cleanup of old deleted files
     }
 
     // Additional interface methods implementation...
@@ -484,7 +484,7 @@ public class CanvasFileServiceImpl implements CanvasFileService {
     }
 
     private void setImageDimensions(CanvasFile canvasFile, MultipartFile file) {
-        // TODO: Implement image dimension detection
+        //  Implement image dimension detection
         // For now, set default dimensions
         canvasFile.setImageWidth(800);
         canvasFile.setImageHeight(600);

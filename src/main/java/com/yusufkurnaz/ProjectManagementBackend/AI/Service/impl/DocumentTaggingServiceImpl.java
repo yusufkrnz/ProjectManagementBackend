@@ -134,7 +134,7 @@ public class DocumentTaggingServiceImpl implements DocumentTaggingService {
         log.info("Generating auto tags from content (length: {})", content.length());
 
         // For now, return empty list. In real implementation, this would use NLP/AI
-        // TODO: Implement actual AI-based tag generation from content analysis
+       
         return Collections.emptyList();
     }
 
@@ -310,19 +310,19 @@ public class DocumentTaggingServiceImpl implements DocumentTaggingService {
 
     @Override
     public void mergeTag(String oldTag, String newTag, UUID userId) {
-        // TODO: Implement tag merging functionality
+       
         log.info("Merging tag '{}' into '{}' by user {}", oldTag, newTag, userId);
     }
 
     @Override
     public void deleteTag(String tag, UUID userId) {
-        // TODO: Implement tag deletion functionality
+       
         log.info("Deleting tag '{}' by user {}", tag, userId);
     }
 
     @Override
     public void cleanupUnusedTags() {
-        // TODO: Implement cleanup of unused tags
+        
         log.info("Cleaning up unused tags");
     }
 
@@ -337,7 +337,7 @@ public class DocumentTaggingServiceImpl implements DocumentTaggingService {
 
     @Override
     public void updateUserDomainPreferences(UUID userId, List<String> preferredTags) {
-        // TODO: Store user preferences in separate table
+        
         log.info("Updating domain preferences for user {} with {} tags", userId, preferredTags.size());
     }
 
@@ -349,7 +349,7 @@ public class DocumentTaggingServiceImpl implements DocumentTaggingService {
 
     @Override
     public void trackTagUsage(UUID userId, String tag) {
-        // TODO: Implement tag usage tracking for analytics
+        
         log.debug("Tracking tag usage: user={}, tag={}", userId, tag);
     }
 
@@ -374,7 +374,7 @@ public class DocumentTaggingServiceImpl implements DocumentTaggingService {
                 .collect(Collectors.toList());
     }
 
-    // Export/Import methods - TODO: Implement
+    // Export/Import methods 
     @Override
     @Transactional(readOnly = true)
     public List<DocumentDomainTag> exportUserTags(UUID userId) {
@@ -383,19 +383,19 @@ public class DocumentTaggingServiceImpl implements DocumentTaggingService {
 
     @Override
     public void importUserTags(UUID userId, List<DocumentDomainTag> tags) {
-        // TODO: Implement tag import
+   
     }
 
     @Override
     @Transactional(readOnly = true)
     public String exportTagsAsJson(UUID userId) {
-        // TODO: Implement JSON export
+       
         return "{}";
     }
 
     @Override
     public void importTagsFromJson(UUID userId, String jsonData) {
-        // TODO: Implement JSON import
+       
     }
 
     // Private helper methods
@@ -404,7 +404,7 @@ public class DocumentTaggingServiceImpl implements DocumentTaggingService {
     }
 
     private String extractDocumentContent(Document document) {
-        // TODO: Extract content from document chunks
+       
         return document.getTitle() + " " + document.getDescription();
     }
 

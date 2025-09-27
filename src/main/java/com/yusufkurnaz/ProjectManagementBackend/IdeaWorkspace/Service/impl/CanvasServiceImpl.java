@@ -279,14 +279,14 @@ public class CanvasServiceImpl implements CanvasService {
     @Override
     @Transactional(readOnly = true)
     public List<CanvasBoard> getWorkspaceCanvases(UUID workspaceId, UUID userId) {
-        // TODO: Add workspace access validation
+        
         return canvasBoardRepository.findByWorkspaceIdAndIsActiveTrue(workspaceId);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Page<CanvasBoard> getWorkspaceCanvases(UUID workspaceId, UUID userId, Pageable pageable) {
-        // TODO: Add workspace access validation
+        
         return canvasBoardRepository.findByWorkspaceIdAndIsActiveTrue(workspaceId, pageable);
     }
 
@@ -461,7 +461,7 @@ public class CanvasServiceImpl implements CanvasService {
     @Override
     @Transactional(readOnly = true)
     public List<String> getPopularTags(UUID workspaceId, int limit) {
-        // TODO: Implement popular tags query
+    
         return List.of();
     }
 

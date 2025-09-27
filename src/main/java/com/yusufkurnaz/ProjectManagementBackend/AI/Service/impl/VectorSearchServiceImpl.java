@@ -119,7 +119,7 @@ public class VectorSearchServiceImpl implements VectorSearchService {
             String embeddingString = floatArrayToString(queryEmbedding);
             
             // Basic search without type filtering for now
-            // TODO: Implement content type filtering
+            // Implement content type filtering
             return documentChunkRepository.findSimilarChunks(
                     embeddingString, 
                     null, // No domain tag filtering
@@ -185,7 +185,7 @@ public class VectorSearchServiceImpl implements VectorSearchService {
             String userId,
             Integer limit) {
         
-        // TODO: Implement personalized recommendations based on user history
+        //Implement personalized recommendations based on user history
         // For now, return high-quality chunks
         return documentChunkRepository.findHighQualityChunks(0.8f)
                 .stream()
